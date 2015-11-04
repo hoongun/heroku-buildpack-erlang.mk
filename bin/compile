@@ -65,8 +65,9 @@ if [ ! -e "erl" ]; then
     make install
 fi
 
-echo "-------> Set ERLROOT env"    
-ln -s ${ERLROOT} /app/otp
+echo "-------> Set ERLROOT env"
+mkdir -p /app/otp
+cp -R ${ERLROOT} /app/otp
 PATH=/app/otp/bin:$PATH
 export PATH
 
