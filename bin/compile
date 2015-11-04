@@ -44,16 +44,14 @@ echo "-----> Using Erlang/OTP"
     tar -xf ${tarball_ncurses}
     echo "-------> Unpacking Erlang/OTP"
     gunzip -c ${tarball_otp} | tar xf -
-)
 
-cd ${build}
 
-if [ ! -e "./otp" ]; then
     echo "-------> Building Erlang from source"
     mkdir -p ${BUILD_ERLROOT}
     ln -s ${BUILD_ERLROOT} ${ERLROOT}
     PATH=/app/otp/bin:$PATH
     export PATH
+
 
     echo "-------> Configure Ncurses"
     cd ${cache}/${NCURSES_SRC}
@@ -69,7 +67,7 @@ if [ ! -e "./otp" ]; then
     echo "-------> Make & install Erlang/OTP"
     make
     make install
-fi
+)
 
 echo "-----> Build app"
 unset GIT_DIR
