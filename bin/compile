@@ -46,7 +46,7 @@ echo "-----> Using Erlang/OTP"
     gunzip -c ${tarball_otp} | tar xf -
 )
 
-if [ ! -e "erl" ]; then
+if [ ! -e "${ERLROOT}" ]; then
     echo "-------> Building Erlang from source"
     mkdir -p ${BUILD_ERLROOT}
     ln -s ${BUILD_ERLROOT} ${ERLROOT}
@@ -72,6 +72,7 @@ fi
 echo "-----> Build app"
 unset GIT_DIR
 cd ${build}
+make clean
 make
 
 echo "-----> Build succeeded"
