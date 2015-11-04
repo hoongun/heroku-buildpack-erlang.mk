@@ -50,7 +50,7 @@ if [ ! -e "erl" ]; then
     mkdir -p ${ERLROOT}
 
     echo "-------> Configure Ncurses"
-    cd ${NCURSES_SRC}
+    cd ${cache}/${NCURSES_SRC}
     ./configure --prefix=${ERLROOT}
     echo "-------> Make & install NCurses"
     make && make install
@@ -58,7 +58,7 @@ if [ ! -e "erl" ]; then
     cd ..
 
     echo "-------> Configure Erlang/OTP"
-    cd ${OTP_SRC}
+    cd ${cache}/${OTP_SRC}
     ./configure --prefix=${ERLROOT}
     echo "-------> Make & install Erlang/OTP"
     make
