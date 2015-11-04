@@ -69,6 +69,7 @@ if [ ! -e "erl" ]; then
 fi
 
 echo "-----> Build app"
+unset GIT_DIR
 cd ${HOME}
 make
 
