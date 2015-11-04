@@ -17,7 +17,7 @@ ERLROOT=${build}/otp
 
 OTP_SRC="otp_src_18"
 tarball_otp=${OTP_SRC}.tar.gz
-OTP_URL="http://www.erlang.org/download/${tarball}"
+OTP_URL="http://www.erlang.org/download/${tarball_otp}"
 
 NCURSES_SRC="ncurses-6.0"
 tarball_ncurses=${NCURSES_SRC}.tar.gz
