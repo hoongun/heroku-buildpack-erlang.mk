@@ -15,7 +15,7 @@ test -z ${cache} && exit
 
 ERLROOT=${build}/otp
 
-OTP_SRC="otp_src_18"
+OTP_SRC="otp_src_18.1"
 tarball_otp=${OTP_SRC}.tar.gz
 OTP_URL="http://www.erlang.org/download/${tarball_otp}"
 
