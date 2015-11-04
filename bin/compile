@@ -46,7 +46,9 @@ echo "-----> Using Erlang/OTP"
     gunzip -c ${tarball_otp} | tar xf -
 )
 
-if [ ! -e "${ERLROOT}" ]; then
+cd ${build}
+
+if [ ! -e "./otp" ]; then
     echo "-------> Building Erlang from source"
     mkdir -p ${BUILD_ERLROOT}
     ln -s ${BUILD_ERLROOT} ${ERLROOT}
