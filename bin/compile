@@ -68,9 +68,11 @@ echo "-----> Using Erlang/OTP"
 )
 
 
-echo "-----> Build app"
+echo "-----> Set erl path"
 PATH=/app/otp/bin:$PATH
 export PATH
+
+echo "-----> Build app"
 unset GIT_DIR
 cd ${build}
 make clean
