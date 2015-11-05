@@ -15,6 +15,7 @@ test -z ${cache} && exit
 
 BUILD_ERLROOT=${build}/otp
 ERLROOT=/app/otp
+APPROOT=/app
 
 OTP_SRC="otp_src_18.1"
 tarball_otp=${OTP_SRC}.tar.gz
@@ -72,7 +73,8 @@ export PATH
 
 echo "-----> Build app"
 unset GIT_DIR
-cd ${build}
+ln -s ${build} ${APPROOT}
+cd ${APPROOT}
 make clean
 make
 
