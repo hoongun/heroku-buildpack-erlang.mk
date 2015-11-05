@@ -40,15 +40,15 @@ echo "-----> Using Erlang/OTP"
     echo "-------> Fetching Erlang/OTP"
     wget ${OTP_URL}
 
+    echo "-------> Building Erlang from source"
+    mkdir -p ${BUILD_ERLROOT}
+    ln -s ${BUILD_ERLROOT} ${ERLROOT}
+
     echo "-------> Unpacking NCurses"
     tar -xf ${cache}/${tarball_ncurses} -C ${BUILD_ERLROOT}
     echo "-------> Unpacking Erlang/OTP"
     tar xzf ${cache}/${tarball_otp} -C ${BUILD_ERLROOT}
 
-
-    echo "-------> Building Erlang from source"
-    mkdir -p ${BUILD_ERLROOT}
-    ln -s ${BUILD_ERLROOT} ${ERLROOT}
 
     echo "-------> Configure Ncurses"
     cd ${cache}/${NCURSES_SRC}
