@@ -34,7 +34,7 @@ ln -s ${BUILD_ERLROOT} ${ERLROOT}
     set -e
 
     # Already cached?
-    test -f ${cache}/${tarball_otp} && test -f ${cache}/${tarball_ncurses} && exit
+    test -f ${cache}/${tarball_otp} && test -f ${cache}/${tarball_ncurses} && -f ${CACHE_ERLROOT} && exit
 
     rm -rf ${cache}/*
     cd ${cache}
@@ -66,6 +66,7 @@ ln -s ${BUILD_ERLROOT} ${ERLROOT}
     make install
 
     echo "-----> Caching OTP"
+    mkdir -p ${CACHE_ERLROOT}
     cp -r ${ERLROOT}/* ${CACHE_ERLROOT}/
 )
 
