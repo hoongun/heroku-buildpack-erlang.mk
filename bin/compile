@@ -66,6 +66,10 @@ ln -s ${BUILD_ERLROOT} ${ERLROOT}
 
 )
 
+if [ -f ${ERLROOT}/bin/erl ]; then
+    echo "-----> Build failed"
+    exit 1
+fi
 
 echo "-----> Set erl path"
 PATH=/app/otp/bin:$PATH
