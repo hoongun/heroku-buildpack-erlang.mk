@@ -24,7 +24,9 @@ NCURSES_SRC="ncurses-6.0"
 tarball_ncurses=${NCURSES_SRC}.tar.gz
 NCURSES_URL="http://ftp.gnu.org/gnu/ncurses/${tarball_ncurses}"
 
-echo "-----> Using Erlang/OTP"
+echo "-----> Using Erlang/OTP ${OTP_SRC}"
+mkdir -p ${BUILD_ERLROOT}
+ln -s ${BUILD_ERLROOT} ${ERLROOT}
 
 (
     set -e
@@ -39,10 +41,6 @@ echo "-----> Using Erlang/OTP"
     wget ${NCURSES_URL} -O ${cache}/${tarball_ncurses}
     echo "-------> Fetching Erlang/OTP"
     wget ${OTP_URL} -O ${cache}/${tarball_otp}
-
-    echo "-------> Building Erlang from source"
-    mkdir -p ${BUILD_ERLROOT}
-    ln -s ${BUILD_ERLROOT} ${ERLROOT}
 
     echo "-------> Unpacking NCurses"
     tar -xf ${cache}/${tarball_ncurses} -C ${cache}
