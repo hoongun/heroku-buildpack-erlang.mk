@@ -41,17 +41,14 @@ echo "-----> Using Erlang/OTP"
     wget ${OTP_URL}
 
     echo "-------> Unpacking NCurses"
-    tar -xf ${tarball_ncurses}
+    tar -xf ${cache}/${tarball_ncurses} -C ${BUILD_ERLROOT}
     echo "-------> Unpacking Erlang/OTP"
-    gunzip -c ${tarball_otp} | tar xf -
+    tar xzf ${cache}/${tarball_otp} -C ${BUILD_ERLROOT}
 
 
     echo "-------> Building Erlang from source"
     mkdir -p ${BUILD_ERLROOT}
     ln -s ${BUILD_ERLROOT} ${ERLROOT}
-    PATH=/app/otp/bin:$PATH
-    export PATH
-
 
     echo "-------> Configure Ncurses"
     cd ${cache}/${NCURSES_SRC}
@@ -67,9 +64,13 @@ echo "-----> Using Erlang/OTP"
     echo "-------> Make & install Erlang/OTP"
     make
     make install
+
 )
 
+
 echo "-----> Build app"
+PATH=/app/otp/bin:$PATH
+export PATH
 unset GIT_DIR
 cd ${build}
 make clean
