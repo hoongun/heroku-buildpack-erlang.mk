@@ -14,6 +14,7 @@ cache=$(cd "$2/" && pwd)
 test -z ${cache} && exit
 
 BUILD_ERLROOT=${build}/otp
+CACHE_ERLROOT=${cache}/otp
 ERLROOT=/app/otp
 APPROOT=/app
 
@@ -64,12 +65,13 @@ ln -s ${BUILD_ERLROOT} ${ERLROOT}
     make
     make install
 
+    echo "-----> Caching OTP"
+    cp -r ${ERLROOT}/* ${CACHE_ERLROOT}/
 )
 
 if [ ! -f ${ERLROOT}/bin/erl ]; then
-    echo "-----> Build failed"
-    ls -al ${ERLROOT}
-    exit 1
+    echo "-----> Copy OTP"
+    cp -r ${CACHE_ERLROOT}/* ${ERLROOT}/
 fi
 
 echo "-----> Set erl path"
@@ -78,7 +80,8 @@ export PATH
 
 echo "-----> Build app"
 unset GIT_DIR
-cd ${APPROOT}
+# cd ${APPROOT}
+cd ${build}
 make clean
 make
 
