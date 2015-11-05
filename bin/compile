@@ -73,7 +73,6 @@ export PATH
 
 echo "-----> Build app"
 unset GIT_DIR
-ln -s ${build} ${APPROOT}
 cd ${APPROOT}
 make clean
 make
