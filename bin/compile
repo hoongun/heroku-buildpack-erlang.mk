@@ -70,7 +70,7 @@ echo "-----> Using Erlang/OTP"
 )
 
 echo "-----> Build app"
-# unset GIT_DIR
+unset GIT_DIR
 cd ${build}
 make clean
 make
