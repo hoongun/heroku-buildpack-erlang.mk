@@ -34,7 +34,7 @@ ln -s ${BUILD_ERLROOT} ${ERLROOT}
     set -e
 
     # Already cached?
-    test -f ${cache}/${tarball_otp} && test -f ${cache}/${tarball_ncurses} && -f ${CACHE_ERLROOT} && exit
+    test -f ${cache}/${tarball_otp} && test -f ${cache}/${tarball_ncurses} && -d ${CACHE_ERLROOT} && exit
 
     rm -rf ${cache}/*
     cd ${cache}
