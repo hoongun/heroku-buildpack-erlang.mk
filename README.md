@@ -18,6 +18,6 @@ Heroku buildpack for Erlang apps using [erlang.mk](http://erlang.mk/). If you ar
 	# Add a Procfile for launch an app
 	echo "web: ./_rel/YOUR_APP_release/bin/YOUR_APP_release-1 start && tail -f output.log" > ./Procfile
   
-	git commit -am "Added Procfile"
+	git commit -am "Added a Procfile"
 	git push heroku master
 
