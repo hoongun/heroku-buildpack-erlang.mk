@@ -84,15 +84,16 @@ echo "-----> Set erl path"
 PATH=/app/otp/bin:$PATH
 export PATH
 
-(
-    set -e
+echo "-----> Build app"
+unset GIT_DIR
+# cd ${APPROOT}
+cd ${build}
+# make clean
+make
 
-    echo "-----> Build app"
-    unset GIT_DIR
-    # cd ${APPROOT}
-    cd ${build}
-    # make clean
-    make
-
+if [ "$?" -ne "0" ]; then
+    echo "-----> Build failed"
+    exit 0
+else
     echo "-----> Build succeeded"
-)
+fi
