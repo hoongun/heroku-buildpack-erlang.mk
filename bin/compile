@@ -91,7 +91,7 @@ export PATH
     unset GIT_DIR
     # cd ${APPROOT}
     cd ${build}
-    make clean
+    # make clean
     make
 
     echo "-----> Build succeeded"
