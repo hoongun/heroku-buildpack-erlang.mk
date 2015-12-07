@@ -78,6 +78,12 @@ ln -s ${BUILD_ERLROOT} ${ERLROOT}
 if [ ! -f ${ERLROOT}/bin/erl ]; then
     echo "-----> Copy OTP"
     cp -r ${CACHE_ERLROOT}/* ${ERLROOT}/
+
+    echo "-----> Set erl path"
+    PATH=/app/otp/bin:$PATH
+    export PATH
+
+    exit 0
 fi
 
 echo "-----> Set erl path"
@@ -91,9 +97,6 @@ cd ${build}
 # make clean
 make
 
-if [ "$?" -ne "0" ]; then
-    echo "-----> Build failed"
-    exit 0
-else
-    echo "-----> Build succeeded"
+echo "-----> Build succeeded"
+
 fi
