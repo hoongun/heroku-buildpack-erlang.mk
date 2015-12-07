@@ -20,8 +20,8 @@ APPROOT=/app
 
 
 DEFAULT_OTP_SRC="otp_src_18.1"
-if [ -f .preferred_otp_version ]; then
-    OTP_VERSION=$(cat .preferred_otp_version)
+if [ -f ${build}/.preferred_otp_version ]; then
+    OTP_VERSION=$(cat ${build}/.preferred_otp_version)
 fi
 OTP_SRC=${OTP_VERSION:=${DEFAULT_OTP_SRC}}
 tarball_otp=${OTP_SRC}.tar.gz

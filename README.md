@@ -25,6 +25,6 @@ Heroku buildpack for Erlang apps using [erlang.mk](http://erlang.mk/). If you ar
 
 	git push heroku master
 
-### Use heroku-repo for flush the buildpack CACHE_DIR
+### Use "heroku-repo" for flush the buildpack CACHE_DIR
 	heroku plugins:install https://github.com/heroku/heroku-repo.git
 	heroku repo:purge_cache -a appname
