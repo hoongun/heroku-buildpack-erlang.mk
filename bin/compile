@@ -18,7 +18,12 @@ CACHE_ERLROOT=${cache}/otp
 ERLROOT=/app/otp
 APPROOT=/app
 
-OTP_SRC="otp_src_18.1"
+
+DEFAULT_OTP_SRC="otp_src_18.1"
+if [ -f .preferred_otp_version ]; then
+    OTP_VERSION=$(cat .preferred_otp_version)
+fi
+OTP_SRC=${OTP_VERSION:=${DEFAULT_OTP_SRC}}
 tarball_otp=${OTP_SRC}.tar.gz
 OTP_URL="http://www.erlang.org/download/${tarball_otp}"
 

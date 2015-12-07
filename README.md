@@ -17,7 +17,14 @@ Heroku buildpack for Erlang apps using [erlang.mk](http://erlang.mk/). If you ar
   
 	# Add a Procfile for launch an app
 	echo "web: ./_rel/YOUR_APP_release/bin/YOUR_APP_release-1 start && tail -f output.log" > ./Procfile
-  
 	git commit -am "Added a Procfile"
+
+	# To set the version of OTP:
+	echo otp_src_18.1 > .preferred_otp_version
+	git commit -m "Selected the preferred OTP version" .preferred_otp_version
+
 	git push heroku master
 
+### Use heroku-repo for flush the buildpack CACHE_DIR
+	heroku plugins:install https://github.com/heroku/heroku-repo.git
+	heroku repo:purge_cache -a appname
