@@ -76,7 +76,7 @@ ln -s ${BUILD_ERLROOT} ${ERLROOT}
     cp -r ${ERLROOT}/* ${CACHE_ERLROOT}/
 )
 
-if [ "$ONLY_CACHE"=true ]; then
+if [ "$ONLY_CACHE" = true ]; then
     exit 0
 fi
 
