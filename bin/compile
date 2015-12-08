@@ -95,5 +95,3 @@ cd ${build}
 make
 
 echo "-----> Build succeeded"
-
-fi
