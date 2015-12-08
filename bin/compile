@@ -34,18 +34,14 @@ NCURSES_URL="http://ftp.gnu.org/gnu/ncurses/${tarball_ncurses}"
 echo "-----> Using Erlang/OTP ${OTP_SRC}"
 mkdir -p ${BUILD_ERLROOT}
 ln -s ${BUILD_ERLROOT} ${ERLROOT}
-
-if [ ! -f ${ERLROOT}/bin/erl ]; then
-  TO_CACHE=true
-else
-  TO_CACHE=false
-fi
+ONLY_CACHE=false
 
 (
     set -e
 
     # Already cached?
     test -f ${cache}/${tarball_otp} && test -f ${cache}/${tarball_ncurses} && test -d ${CACHE_ERLROOT} && exit
+    ONLY_CACHE=true
 
     rm -rf ${cache}/*
     cd ${cache}
@@ -81,16 +77,12 @@ fi
     cp -r ${ERLROOT}/* ${CACHE_ERLROOT}/
 )
 
-if [ "$TO_CACHE"=true ]; then
-    echo "-----> Copy OTP"
-    cp -r ${CACHE_ERLROOT}/* ${ERLROOT}/
-
-    echo "-----> Set erl path"
-    PATH=/app/otp/bin:$PATH
-    export PATH
-
+if [ "$ONLY_CACHE"=true ]; then
     exit 0
 fi
+
+echo "-----> Copy OTP"
+cp -r ${CACHE_ERLROOT}/* ${ERLROOT}/
 
 echo "-----> Set erl path"
 PATH=/app/otp/bin:$PATH
