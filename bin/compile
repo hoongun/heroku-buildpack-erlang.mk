@@ -35,6 +35,12 @@ echo "-----> Using Erlang/OTP ${OTP_SRC}"
 mkdir -p ${BUILD_ERLROOT}
 ln -s ${BUILD_ERLROOT} ${ERLROOT}
 
+if [ ! -f ${ERLROOT}/bin/erl ]; then
+  TO_CACHE=true
+else
+  TO_CACHE=false
+fi
+
 (
     set -e
 
@@ -75,7 +81,7 @@ ln -s ${BUILD_ERLROOT} ${ERLROOT}
     cp -r ${ERLROOT}/* ${CACHE_ERLROOT}/
 )
 
-if [ ! -f ${ERLROOT}/bin/erl ]; then
+if [ "$TO_CACHE"=true ]; then
     echo "-----> Copy OTP"
     cp -r ${CACHE_ERLROOT}/* ${ERLROOT}/
 
