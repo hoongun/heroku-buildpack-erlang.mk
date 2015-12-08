@@ -34,7 +34,6 @@ NCURSES_URL="http://ftp.gnu.org/gnu/ncurses/${tarball_ncurses}"
 echo "-----> Using Erlang/OTP ${OTP_SRC}"
 mkdir -p ${BUILD_ERLROOT}
 ln -s ${BUILD_ERLROOT} ${ERLROOT}
-ONLY_CACHE=false
 
 (
     set -e
